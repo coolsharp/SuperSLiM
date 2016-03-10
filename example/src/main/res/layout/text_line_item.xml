@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:textColor="#222222"
             android:textSize="16sp"
+            android:text="검색 옵션 항목"
             tools:text="Text Line Item"
             />
 </LinearLayout>

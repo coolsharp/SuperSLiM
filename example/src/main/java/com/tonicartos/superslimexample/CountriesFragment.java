@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.tonicartos.superslim.GridSLM;
 import com.tonicartos.superslim.LayoutManager;
-import com.tonicartos.superslim.LinearSLM;
 import com.tonicartos.superslim.SectionLayoutManager;
 
 import java.util.Random;
@@ -56,12 +55,6 @@ public class CountriesFragment extends Fragment {
         return mHeaderDisplay;
     }
 
-    public void setHeaderMode(int mode) {
-        mHeaderDisplay = mode | (mHeaderDisplay & LayoutManager.LayoutParams.HEADER_OVERLAY) | (
-                mHeaderDisplay & LayoutManager.LayoutParams.HEADER_STICKY);
-        mAdapter.setHeaderDisplay(mHeaderDisplay);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -87,8 +80,6 @@ public class CountriesFragment extends Fragment {
         mViews = new ViewHolder(view);
         mViews.initViews(new LayoutManager(getActivity()));
         mAdapter = new CountryNamesAdapter(getActivity(), mHeaderDisplay);
-        mAdapter.setMarginsFixed(mAreMarginsFixed);
-        mAdapter.setHeaderDisplay(mHeaderDisplay);
         mViews.setAdapter(mAdapter);
     }
 
@@ -102,46 +93,27 @@ public class CountriesFragment extends Fragment {
 
     public void scrollToRandomPosition() {
         int position = mRng.nextInt(mAdapter.getItemCount());
-        String s = "Scroll to position " + position
-                + (mAdapter.isItemHeader(position) ? ", header " : ", item ")
-                + mAdapter.itemToString(position) + ".";
+//        String s = "Scroll to position " + position
+//                + (mAdapter.isItemHeader(position) ? ", header " : ", item ")
+//                + mAdapter.itemToString(position) + ".";
         if (mToast != null) {
-            mToast.setText(s);
+//            mToast.setText(s);
         } else {
-            mToast = Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT);
+//            mToast = Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT);
         }
         mToast.show();
         mViews.scrollToPosition(position);
     }
 
-    public void setHeadersOverlaid(boolean areHeadersOverlaid) {
-        mHeaderDisplay = areHeadersOverlaid ? mHeaderDisplay
-                | LayoutManager.LayoutParams.HEADER_OVERLAY
-                : mHeaderDisplay & ~LayoutManager.LayoutParams.HEADER_OVERLAY;
-        mAdapter.setHeaderDisplay(mHeaderDisplay);
-    }
-
-    public void setHeadersSticky(boolean areHeadersSticky) {
-        mHeaderDisplay = areHeadersSticky ? mHeaderDisplay
-                | LayoutManager.LayoutParams.HEADER_STICKY
-                : mHeaderDisplay & ~LayoutManager.LayoutParams.HEADER_STICKY;
-        mAdapter.setHeaderDisplay(mHeaderDisplay);
-    }
-
-    public void setMarginsFixed(boolean areMarginsFixed) {
-        mAreMarginsFixed = areMarginsFixed;
-        mAdapter.setMarginsFixed(areMarginsFixed);
-    }
-
     public void smoothScrollToRandomPosition() {
         int position = mRng.nextInt(mAdapter.getItemCount());
-        String s = "Smooth scroll to position " + position
-                + (mAdapter.isItemHeader(position) ? ", header " : ", item ")
-                + mAdapter.itemToString(position) + ".";
+//        String s = "Smooth scroll to position " + position
+//                + (mAdapter.isItemHeader(position) ? ", header " : ", item ")
+//                + mAdapter.itemToString(position) + ".";
         if (mToast != null) {
-            mToast.setText(s);
+//            mToast.setText(s);
         } else {
-            mToast = Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT);
+//            mToast = Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT);
         }
         mToast.show();
         mViews.smoothScrollToPosition(position);
